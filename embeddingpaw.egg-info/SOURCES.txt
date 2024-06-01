@@ -1,0 +1,9 @@
+README.md
+setup.py
+embeddingpaw/__init__.py
+embeddingpaw/embeddingpaw.py
+embeddingpaw.egg-info/PKG-INFO
+embeddingpaw.egg-info/SOURCES.txt
+embeddingpaw.egg-info/dependency_links.txt
+embeddingpaw.egg-info/requires.txt
+embeddingpaw.egg-info/top_level.txt

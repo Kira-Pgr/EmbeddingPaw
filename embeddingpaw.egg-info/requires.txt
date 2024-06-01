@@ -1,0 +1,5 @@
+numpy
+pandas
+openai
+scikit-learn
+pyecharts
