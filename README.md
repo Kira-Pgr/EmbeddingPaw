@@ -8,6 +8,7 @@ To install EmbeddingPaw, you can use pip:
 
 ```bash
 git clone https://github.com/Kira-Pgr/EmbeddingPaw.git
+cd EmbeddingPaw
 python setup.py sdist bdist_wheel
 pip install .
 ```
