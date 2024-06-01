@@ -7,6 +7,7 @@ EmbeddingPaw is a Python library for playing with text embeddings. It provides a
 To install EmbeddingPaw, you can use pip:
 
 ```bash
+git clone https://github.com/Kira-Pgr/EmbeddingPaw.git
 python setup.py sdist bdist_wheel
 pip install .
 ```
