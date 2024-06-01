@@ -30,15 +30,29 @@ class EmbeddingPaw:
     :param api_key: The API key
     :param embedding_db_path: The path to the embedding database (pickle file)
     """
-    def __init__(self, base_url: str, api_key: str, embedding_db_path: str):
+    def __init__(self, base_url: str, api_key: str, embedding_db_path: str = None):
         self.base_url = base_url
         self.api_key = api_key
         self.embedding_db_path = embedding_db_path
         self.set_config()
-        
+    
     def set_config(self):
+        if not self.embedding_db_path:
+            self.embedding_db_path = "embeddings_db.pkl"
+            self.create_new_db(self.embedding_db_path)
+        if not os.path.exists(self.embedding_db_path):
+            self.create_new_db(self.embedding_db_path)
         Token.set_config(self)
         EmbeddingPawDatabase.set_config(self)
+        
+    @staticmethod
+    def create_new_db(db_path):
+        # Create an empty dictionary for embeddings
+        embedding_dict = {}
+        # Save the empty dictionary to the specified path
+        with open(db_path, 'wb') as db_file:
+            pickle.dump(embedding_dict, db_file)
+        print(f"New embedding database created and saved to {db_path}")
 
 
 class Token:
