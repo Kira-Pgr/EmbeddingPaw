@@ -26,7 +26,11 @@ config = EmbeddingPaw(
     embedding_db_path="embeddings_db.pkl"
 )
 ```
-You can use LMStudio to create your own local embedding server. You can also use the OpenAI API by providing your API key.
+You can use [LMStudio](https://lmstudio.ai/docs/welcome) to create your own local embedding server 
+
+<img width="1512" alt="image" src="https://github.com/Kira-Pgr/EmbeddingPaw/assets/36188023/2f0573ad-ef73-4b0e-8780-2cb76d4b6b2b">
+
+or use the OpenAI API by providing your API key.
 
 ## Creating Tokens
 
