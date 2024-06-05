@@ -216,6 +216,51 @@ class TokenArray:
         self.text.pop(index)
         self.embeddings = np.delete(self.embeddings, index, axis=0)
         self.length -= 1
+
+    def cluster_tokens(self, range_k=range(2, 10)):
+        # Use existing embeddings from Token objects
+        embeddings = np.array([token.embedding for token in self.tokens])
+
+        # Determine the optimal number of clusters using the Silhouette Method
+        silhouette_scores = []
+        for k in range_k:
+            kmeans = KMeans(n_clusters=k, init='k-means++', random_state=42)
+            kmeans.fit(embeddings)
+            silhouette_scores.append(silhouette_score(embeddings, kmeans.labels_))
+
+        # Plot the Silhouette Scores to visualize the Silhouette Method
+        plt.figure(figsize=(10, 5))
+        plt.plot(range_k, silhouette_scores, marker='o')
+        plt.title('Silhouette Method')
+        plt.xlabel('Number of Clusters')
+        plt.ylabel('Silhouette Score')
+        plt.show()
+
+        # Determine the optimal number of clusters using the maximum silhouette score
+        optimal_k = range_k[np.argmax(silhouette_scores)]
+        print(f'Optimal number of clusters: {optimal_k}')
+
+        # Perform k-means clustering with the optimal number of clusters
+        kmeans = KMeans(n_clusters=optimal_k, init='k-means++', random_state=42)
+        kmeans.fit(embeddings)
+
+        # Print cluster assignments
+        cluster_assignments = kmeans.labels_
+        print("Cluster assignments:", cluster_assignments)
+
+        # Group tokens by their cluster assignments
+        k_means_result = {i: [] for i in range(optimal_k)}
+        for idx, assignment in enumerate(cluster_assignments):
+            k_means_result[assignment].append(self.tokens[idx])
+
+        # Prepare data for tabulate
+        table = sorted([[cluster, token.text] for cluster, tokens in k_means_result.items() for token in tokens],
+                       key=lambda x: x[0])
+
+        # Pretty print the results
+        print(tabulate(table, headers=["Cluster", "Token"], tablefmt="fancy_grid"))
+
+        return k_means_result
     
     def pca(self, n_components=3):
         """
