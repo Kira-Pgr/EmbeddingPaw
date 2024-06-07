@@ -80,6 +80,7 @@ The `TokenArray` class provides methods for manipulating and analyzing the array
 - `pop()`: Remove the last token from the array.
 - `delete(text)`: Delete a token from the array based on its text.
 - `pca(n_components=3)`: Apply Principal Component Analysis (PCA) to reduce the dimensionality of the embeddings.
+- `cluster_tokens(range_k=range(2, 10))`: Cluster the tokens and show the result in a table.
 
 ## Visualizing Embeddings
 
