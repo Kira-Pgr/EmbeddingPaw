@@ -51,16 +51,12 @@ EmbeddingPaw provides various operations that you can perform on `Token` objects
 - `get_similarity(token)`: Calculate the cosine similarity between two tokens.
 - `get_closest_token(num=1)`: Find the closest token(s) in the embedding database.
 
-Users can perform arithmetic operations on token embeddings using the following operators:
+You can also perform arithmetic operations on token embeddings using the following operators:
 - Addition (`+`): Add the embeddings of two tokens.
 - Subtraction (`-`): Subtract the embeddings of two tokens.
 - Multiplication (`*`): Multiply the embeddings of two tokens.
 - Division (`/`): Divide the embeddings of two tokens.
 - Matrix Multiplication (`@`): Perform matrix multiplication on the embeddings of two tokens.
-
-These arithmetic operations allow users to manipulate and combine token embeddings in meaningful ways.
-
-Additionally, users can calculate the mean of two token embeddings using the `mean(other)` method.
 
 ## Token Arrays
 
