@@ -44,8 +44,6 @@ token = Token("Hello, world!")
 
 The `Token` class automatically retrieves the embedding for the given text using the configured API.
 
-Sure! Here's the updated part:
-
 ## Token Operations
 
 EmbeddingPaw provides various operations that you can perform on `Token` objects:
